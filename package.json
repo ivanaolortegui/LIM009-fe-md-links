@@ -1,0 +1,30 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "Markdown Links ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanaolortegui/LIM009-fe-md-links.git"
+  },
+  "keywords": [
+    "javascript",
+    "node.js",
+    "npm"
+  ],
+  "author": "Ivana OLortegui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivanaolortegui/LIM009-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/ivanaolortegui/LIM009-fe-md-links#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-install": "2.1.0",
+    "eslint": "^5.16.0"
+  },
+  "dependencies": {}
+}
