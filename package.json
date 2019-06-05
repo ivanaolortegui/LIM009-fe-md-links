@@ -4,6 +4,7 @@
   "description": "Markdown Links ",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
     "htmlhint": "htmlhint dist/*.html ",
     "test": "jest --coverage"
   },
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
@@ -42,7 +44,8 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
-    "i": "^0.3.6",
-    "@babel/polyfill": "^7.4.4"
+    "@babel/polyfill": "^7.4.4",
+    "esm": "^3.2.25",
+    "i": "^0.3.6"
   }
 }
