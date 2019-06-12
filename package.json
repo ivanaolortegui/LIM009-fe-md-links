@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
     "htmlhint": "htmlhint dist/*.html ",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
     "npm"
   ],
   "bin": {
-    "md-links": "cli.js"
+    "md-links": "./lib/cli.js"
   },
   "author": "Ivana OLortegui",
   "license": "MIT",
@@ -46,6 +47,13 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "esm": "^3.2.25",
-    "i": "^0.3.6"
+    "i": "^0.3.6",
+    "jsdom": "^15.1.1",
+    "markdown-it": "^8.4.2",
+    "node-html-parser": "^1.1.15",
+    "query-selector": "^1.0.9"
+  },
+  "directories": {
+    "test": "test"
   }
 }
