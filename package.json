@@ -50,6 +50,7 @@
     "i": "^0.3.6",
     "jsdom": "^15.1.1",
     "markdown-it": "^8.4.2",
+    "node-fetch": "^2.6.0",
     "node-html-parser": "^1.1.15",
     "query-selector": "^1.0.9"
   },
