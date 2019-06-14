@@ -2,11 +2,12 @@
 const md = require('markdown-it')();
 const fetch = require('node-fetch');
 export const fs = require('fs');
+export const path = require('path');
 import { isDirectory, routeIsAbsolute, extensionmd, isFile } from './index.js'
 import { parse } from 'node-html-parser';
 
 
-const parserMd = (content, router) => {
+const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
   parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
     arraysLinksTotals.push({
@@ -15,19 +16,18 @@ const parserMd = (content, router) => {
       ruta: router
     })
   })
-
-  return Promise.all(arraysLinksTotals.map((link) => {
-    return fetch(link.link.slice(6, link.link.length - 1)).then((data) => {
-      const objLink = Object.assign([], link)
-      objLink.status = data.status,
-        objLink.ok = data.statusText;
-      return objLink;
-    })
-
-
-  }))
-
-
+  if (validate.validate === true) {
+    return Promise.all(arraysLinksTotals.map((link) => {
+      return fetch(link.link.slice(6, link.link.length - 1)).then((data) => {
+        const objLink = Object.assign({}, link)
+        objLink.status = data.status,
+          objLink.ok = data.statusText;
+        return objLink;
+      })
+    }))
+  } else {
+    return arraysLinksTotals;
+  }
 }
 
 // Leer carpetas y recursión 
@@ -56,23 +56,23 @@ export const getFilesOfDir = (router, arrExtension) => {
 
 //Leer Archivos
 
-export const readFile = (router) => {
+export const readFile = (router, validate) => {
   const arr = getFilesOfDir(router, []);
   return parserMd(arr.map((ele) => {
     return fs.readFileSync(ele).toString();
-  }), router)
+  }), router, validate)
 
 
 }
 
-export const routerAbsoluteAndFile = (router) => {
+export const routerAbsoluteAndFile = (router, validate) => {
   const routerAbsolute = routeIsAbsolute(router);
   if (isFile(routerAbsolute)) {
     if (extensionmd(routerAbsolute)) {
-      return parserMd(fs.readFileSync(routerAbsolute).toString(), router);
+      return parserMd(fs.readFileSync(routerAbsolute).toString(), router, validate);
     }
   } else {
-    return readFile(router)
+    return readFile(router, validate)
   }
 
 }
