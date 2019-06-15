@@ -6,7 +6,7 @@ export const path = require('path');
 import { isDirectory, routeIsAbsolute, extensionmd, isFile } from './index.js'
 import { parse } from 'node-html-parser';
 
-
+// Función para parsear el contenido del archivo md 
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
   parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
@@ -51,9 +51,6 @@ export const getFilesOfDir = (router, arrExtension) => {
   return arrExtension;
 }
 
-
-
-
 //Leer Archivos
 
 export const readFile = (router, validate) => {
@@ -64,12 +61,16 @@ export const readFile = (router, validate) => {
 
 
 }
+// Función que convierte ruta en absoluta 
+//si es archivo y si tiene extensión md y si es carpeta 
 
 export const routerAbsoluteAndFile = (router, validate) => {
   const routerAbsolute = routeIsAbsolute(router);
   if (isFile(routerAbsolute)) {
     if (extensionmd(routerAbsolute)) {
       return parserMd(fs.readFileSync(routerAbsolute).toString(), router, validate);
+    } else {
+      return [];
     }
   } else {
     return readFile(router, validate)
