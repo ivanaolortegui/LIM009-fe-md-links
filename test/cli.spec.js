@@ -1,9 +1,12 @@
-import { args } from '../src/cli.js'
+import { cli } from '../src/cli.js'
 
-describe('args', () => {
+describe('cli', () => {
     it('debería ser una función', () => {
-      expect(process.argv[2]).toBe('function')
+      expect( typeof cli).toBe('function')
     });
     
-  
+    it('debería ser una función', () => {
+      expect(cli(process.argv)).toEqual({"stats": false, "validate": false})
+    });
+    
   });

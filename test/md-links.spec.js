@@ -52,7 +52,7 @@ describe('mdLinks', () => {
           "ruta": "/home/ivana/LIM009-fe-md-links/test/",
           "text": "Man"
         }, {
-          "link": "href=\"https://es.wikipedia.org/wiki/ss\"",
+          "link": "href=\"http://www.hddskds.cd/\"",
           "ruta": "/home/ivana/LIM009-fe-md-links/test/",
           "text": "vv",
         }])
@@ -64,9 +64,10 @@ describe('mdLinks', () => {
     mdLinks('/home/ivana/LIM009-fe-md-links/test/vv', { validate: true }).
       then((links) => {
         expect(links).toEqual([{
-          "link": "href=\"https://es.wikipedia.org/wiki/ss\"",
-          "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/vv",
-          "status": 200, "text": "vv"
+          "link": "href=\"http://www.hddskds.cd/\"",
+         "ok": "fail", "ruta": "/home/ivana/LIM009-fe-md-links/test/vv",
+         "status": "request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80",
+         "text": "vv",
         }])
         done();
       });

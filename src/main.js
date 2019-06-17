@@ -4,6 +4,37 @@ const fetch = require('node-fetch');
 import { isDirectory, routeIsAbsolute, extensionmd, isFile, path, fs } from './index.js'
 import { parse } from 'node-html-parser';
 
+
+// funcion para stats y validate
+export const broken = (links, arr) => {
+   let brokens = 0;
+   arr.forEach((ele)=> {
+   if(ele.ok === 'fail') {
+    brokens +=1;
+   }
+ })  
+ const result = links.concat(`Broken : ${brokens}`)
+ return result;
+}
+
+// Funcion para stats
+export const stats = (links) => { 
+  let total = 0;
+  links.forEach((ele) => {
+    if (ele.link) {
+      total += 1;
+    }
+  })
+  
+  const unique = links.reduce((ele, accum) => {
+    return (ele.link === accum.link) ?
+      [accum.link].length : [ele.link].length
+  })
+  return `Total :${total}
+Unique :${unique} 
+`
+}
+
 // Función para parsear el contenido del archivo md 
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
@@ -19,15 +50,16 @@ const parserMd = (content, router, validate) => {
       const objLink = Object.assign({}, link)
       return fetch(link.link.slice(6, link.link.length - 1)).then((data) => {
         objLink.status = data.status,
-        objLink.ok = data.statusText;
+          objLink.ok = data.statusText;
         return objLink;
       }).catch((err) => {
         objLink.status = err.message,
         objLink.ok = 'fail';
-        return objLink;
+          return objLink;
       })
     }))
-  } else {
+
+  }  else {
     return arraysLinksTotals;
   }
 }
