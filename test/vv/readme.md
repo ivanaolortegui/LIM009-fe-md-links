@@ -1,3 +1,3 @@
 
 
-[vv](https://es.wikipedia.org/wiki/ss)
+[vv](http://www.hddskds.cd/)

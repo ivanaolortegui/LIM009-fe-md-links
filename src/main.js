@@ -1,9 +1,7 @@
 
 const md = require('markdown-it')();
 const fetch = require('node-fetch');
-export const fs = require('fs');
-export const path = require('path');
-import { isDirectory, routeIsAbsolute, extensionmd, isFile } from './index.js'
+import { isDirectory, routeIsAbsolute, extensionmd, isFile, path, fs } from './index.js'
 import { parse } from 'node-html-parser';
 
 // Función para parsear el contenido del archivo md 
@@ -18,10 +16,14 @@ const parserMd = (content, router, validate) => {
   })
   if (validate.validate === true) {
     return Promise.all(arraysLinksTotals.map((link) => {
+      const objLink = Object.assign({}, link)
       return fetch(link.link.slice(6, link.link.length - 1)).then((data) => {
-        const objLink = Object.assign({}, link)
         objLink.status = data.status,
-          objLink.ok = data.statusText;
+        objLink.ok = data.statusText;
+        return objLink;
+      }).catch((err) => {
+        objLink.status = err.message,
+        objLink.ok = 'fail';
         return objLink;
       })
     }))
@@ -37,7 +39,6 @@ export const getFilesOfDir = (router, arrExtension) => {
 
   arrFiles.forEach((ele) => {
     const routerAbsolute = path.join(router, ele)
-
     if (isDirectory(routerAbsolute)) {
       getFilesOfDir(routerAbsolute, arrExtension);
 

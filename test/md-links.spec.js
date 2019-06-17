@@ -72,4 +72,11 @@ describe('mdLinks', () => {
       });
 
   });
+  it('debería ser retornar una promesa de array de objetos validados links', (done) => {
+    mdLinks('/home/ivana/LIM009-fe-md-links/test/index.spec.js', { validate: true }).
+      then((links) => {
+        expect(links).toEqual([])
+        done();
+      });
+    });
 });

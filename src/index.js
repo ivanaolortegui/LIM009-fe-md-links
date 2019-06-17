@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+export const path = require('path');
+export const fs = require('fs');
 
 // Verifica si es direcctorio
 export const isDirectory = (router) => {
