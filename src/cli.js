@@ -26,13 +26,16 @@ import { stats, broken } from './main.js'
 
 
 export const mdLink = (path, options)=> {
-   mdLinks(path, options).then((links) => {
+   return mdLinks(path, options).then((links) => {
     if (options.stats === true && options.validate === true) {
    console.log(broken(stats(links), links))
+   return broken(stats(links), links);
   } else if(options.stats === true){
     console.log(stats(links))
+    return stats(links);
   } else {
-   console.log(links);
+    console.log(links);
+    return links;
   }
   }) 
 }

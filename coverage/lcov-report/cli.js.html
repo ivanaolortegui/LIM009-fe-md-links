@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>19/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>19/19</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,7 +90,9 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -100,32 +102,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,33 +147,35 @@ import { mdLinks } from './md-links.js'
 import { stats, broken } from './main.js'
 //import {bin, path } from './bin.js'
  
-  export const cli = <span class="fstat-no" title="function not covered" >(a</span>rgsmt) =&gt; {
-     const arg = <span class="cstat-no" title="statement not covered" >{};  </span>
-<span class="cstat-no" title="statement not covered" >    if (argsmt.indexOf('--validate') !=-1)  {   </span>
-<span class="cstat-no" title="statement not covered" >      arg.validate = true  </span>
+  export const cli = (argsmt) =&gt; {
+     const arg = {};  
+    if (argsmt.indexOf('--validate') !=-1)  {   
+      arg.validate = true  
    } else {
-<span class="cstat-no" title="statement not covered" >    arg.validate = false;</span>
+    arg.validate = false;
    } 
-<span class="cstat-no" title="statement not covered" >   if  (argsmt.indexOf('--stats') !=-1) {</span>
-<span class="cstat-no" title="statement not covered" >    arg.stats = true</span>
+   if  (argsmt.indexOf('--stats') !=-1) {
+    arg.stats = true
    }  else {
-<span class="cstat-no" title="statement not covered" >    arg.stats = false;</span>
+    arg.stats = false;
    } 
    
-<span class="cstat-no" title="statement not covered" >   return arg;</span>
+   return arg;
  }
  //const options = cli(bin)
 &nbsp;
 &nbsp;
 export const mdLink = (path, options)=&gt; {
-   mdLinks(path, options).then(<span class="fstat-no" title="function not covered" >(l</span>inks) =&gt; {
-<span class="cstat-no" title="statement not covered" >    if (options.stats === true &amp;&amp; options.validate === true) {</span>
-<span class="cstat-no" title="statement not covered" >   console.log(broken(stats(links), links))</span>
-<span class="cstat-no" title="statement not covered" >   return broken(stats(links), links);</span>
-  } else <span class="cstat-no" title="statement not covered" >if(options.stats === true){</span>
-<span class="cstat-no" title="statement not covered" >    console.log(stats(links))</span>
+   return mdLinks(path, options).then((links) =&gt; {
+    if (options.stats === true &amp;&amp; options.validate === true) {
+   console.log(broken(stats(links), links))
+   return broken(stats(links), links);
+  } else if(options.stats === true){
+    console.log(stats(links))
+    return stats(links);
   } else {
-<span class="cstat-no" title="statement not covered" >   console.log(links);</span>
+    console.log(links);
+    return links;
   }
   }) 
 }
@@ -184,7 +190,7 @@ export const mdLink = (path, options)=&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jun 19 2019 14:20:36 GMT-0500 (Peru Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jun 19 2019 15:29:43 GMT-0500 (Peru Standard Time)
 </div>
 </div>
 <script src="prettify.js"></script>
