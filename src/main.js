@@ -11,28 +11,26 @@ export const broken = (links, arr) => {
    arr.forEach((ele)=> {
    if(ele.ok === 'fail') {
     brokens +=1;
+   } else {
+    brokens +=0;
    }
  })  
  const result = links.concat(`Broken : ${brokens}`)
- return result;
+ return `${result}`;
 }
 
 // Funcion para stats
 export const stats = (links) => { 
   let total = 0;
   links.forEach((ele) => {
-    if (ele.link) {
-      total += 1;
-    }
+  (ele.link) ?  total += 1: total;   
   })
-  
-  const unique = links.reduce((ele, accum) => {
-    return (ele.link === accum.link) ?
-      [accum.link].length : [ele.link].length
-  })
-  return `Total :${total}
-Unique :${unique} 
-`
+  let unique = []
+   links.filter((ele) => {
+    unique.indexOf(ele.link) === -1 ? unique.push(ele.link) : unique;
+   })
+ 
+  return `Total :${total}\nUnique :${unique.length}`
 }
 
 // Función para parsear el contenido del archivo md 
