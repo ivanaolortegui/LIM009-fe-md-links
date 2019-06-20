@@ -1,35 +1,35 @@
 
 const md = require('markdown-it')();
-const fetch = require('node-fetch');
+import { fetchLink } from './fetch.js'
 import { isDirectory, routeIsAbsolute, extensionmd, isFile, path, fs } from './index.js'
 import { parse } from 'node-html-parser';
 
 
 // funcion para stats y validate
 export const broken = (links, arr) => {
-   let brokens = 0;
-   arr.forEach((ele)=> {
-   if(ele.ok === 'fail') {
-    brokens +=1;
-   } else {
-    brokens +=0;
-   }
- })  
- const result = links.concat(`Broken : ${brokens}`)
- return `${result}`;
+  let brokens = 0;
+  arr.forEach((ele) => {
+    if (ele.ok === 'fail') {
+      brokens += 1;
+    } else {
+      brokens += 0;
+    }
+  })
+  const result = links.concat(`\nBroken : ${brokens}`)
+  return `${result}`;
 }
 
 // Funcion para stats
-export const stats = (links) => { 
+export const stats = (links) => {
   let total = 0;
   links.forEach((ele) => {
-  (ele.link) ?  total += 1: total;   
+    (ele.link) ? total += 1 : total;
   })
   let unique = []
-   links.filter((ele) => {
+  links.filter((ele) => {
     unique.indexOf(ele.link) === -1 ? unique.push(ele.link) : unique;
-   })
- 
+  })
+
   return `Total :${total}\nUnique :${unique.length}`
 }
 
@@ -37,6 +37,8 @@ export const stats = (links) => {
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
   parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
+    console.log(link.attributes.href);
+    
     arraysLinksTotals.push({
       link: link.rawAttrs,
       text: link.childNodes[0].rawText,
@@ -46,18 +48,9 @@ const parserMd = (content, router, validate) => {
   if (validate.validate === true) {
     return Promise.all(arraysLinksTotals.map((link) => {
       const objLink = Object.assign({}, link)
-      return fetch(link.link.slice(6, link.link.length - 1)).then((data) => {
-        objLink.status = data.status,
-          objLink.ok = data.statusText;
-        return objLink;
-      }).catch((err) => {
-        objLink.status = err.message,
-        objLink.ok = 'fail';
-          return objLink;
-      })
+      return fetchLink(objLink, link)
     }))
-
-  }  else {
+  } else {
     return arraysLinksTotals;
   }
 }

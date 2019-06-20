@@ -1,5 +1,10 @@
+import fetchMock from "../__mocks__/node-fetch"
+fetchMock.config.sendAsJson = false;
 import { cli, mdLink } from '../src/cli.js'
 
+fetchMock
+  .mock('https://es.wikipedia.org/wiki/Markdown', 200)
+  .mock('http://www.hddskds.cd/', { throws: new TypeError('request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80') })
 
 describe('cli', () => {
   it('debería ser una función', () => {
@@ -22,7 +27,7 @@ describe('md-links', () => {
   it('debería retornar validate y stats', (done) => {
     mdLink('/home/ivana/LIM009-fe-md-links/test/readme.md', { validate: true, stats: true }).
       then((links) => {
-        expect(links).toEqual(`Total :2\nUnique :1Broken : 0`)
+        expect(links).toEqual(`Total :2\nUnique :1\nBroken : 0`)
         done()
       });
   });

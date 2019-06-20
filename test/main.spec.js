@@ -51,9 +51,9 @@ describe('broken', () => {
       "ruta": "/home/ivana/LIM009-fe-md-links/test/vv",
       "status": "request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80",
       "text": "vv"
-    }])).toEqual("Total :2 Unique :1Broken : 2")
+    }])).toEqual("Total :2 Unique :1\nBroken : 2")
   })
-  it('debería retorna una cadena con los links broken', () => {
+  it('debería retorna una cadena con los links broken en cero', () => {
     expect(broken("Total :2 Unique :1", [ { 'link': 'href="https://es.wikipedia.org/wiki/Markdown"',
     'text': 'Markdown',
     'ruta': '/home/ivana/LIM009-fe-md-links/test/readme.md',
@@ -63,6 +63,6 @@ describe('broken', () => {
     'text': 'Man',
     'ruta': '/home/ivana/LIM009-fe-md-links/test/readme.md',
     'status': 200,
-    'ok': 'OK' } ])).toBe("Total :2 Unique :1Broken : 0")
+    'ok': 'OK' } ])).toBe("Total :2 Unique :1\nBroken : 0")
   })
 });

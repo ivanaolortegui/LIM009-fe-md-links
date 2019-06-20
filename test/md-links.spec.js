@@ -1,4 +1,10 @@
+import fetchMock from "../__mocks__/node-fetch"
+fetchMock.config.sendAsJson = false;
+
 import { mdLinks } from '../src/md-links.js'
+fetchMock
+.mock('https://es.wikipedia.org/wiki/Markdown', 200)
+.mock('http://www.hddskds.cd/', { throws: new TypeError('request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80') })
 
 describe('mdLinks', () => {
   it('debería ser una función', () => {
