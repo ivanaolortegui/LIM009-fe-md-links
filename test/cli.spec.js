@@ -42,12 +42,12 @@ describe('md-links', () => {
     mdLink('/home/ivana/LIM009-fe-md-links/test/readme.md', { validate: true, stats: false }).
       then((links) => {
         expect(links).toEqual([{
-          "link": "href=\"https://es.wikipedia.org/wiki/Markdown\"",
+          "link": "https://es.wikipedia.org/wiki/Markdown",
           "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
           "status": 200, "text": "Markdown"
         },
         {
-          "link": "href=\"https://es.wikipedia.org/wiki/Markdown\"",
+          "link": "https://es.wikipedia.org/wiki/Markdown",
           "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
           "status": 200, "text": "Man"
         }])

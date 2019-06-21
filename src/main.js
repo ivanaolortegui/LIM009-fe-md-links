@@ -36,11 +36,9 @@ export const stats = (links) => {
 // Función para parsear el contenido del archivo md 
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
-  parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
-    console.log(link.attributes.href);
-    
+  parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {      
     arraysLinksTotals.push({
-      link: link.rawAttrs,
+      link: link.attributes.href,
       text: link.childNodes[0].rawText,
       ruta: router
     })

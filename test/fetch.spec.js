@@ -13,16 +13,16 @@ describe('fetchLink', () => {
   });
   it('retornar un objeto con status y ok', () => {
     fetchLink({
-      "link": "href=\"https://es.wikipedia.org/wiki/Markdown\"",
+      "link": "https://es.wikipedia.org/wiki/Markdown",
       "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
       "status": 200, "text": "Markdown"
     }, {
-        "link": "href=\"https://es.wikipedia.org/wiki/Markdown\"",
+        "link": "https://es.wikipedia.org/wiki/Markdown",
         "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
         "status": 200, "text": "Markdown"
       }).then((data) => {
         expect(data).toEqual({
-          "link": "href=\"https://es.wikipedia.org/wiki/Markdown\"",
+          "link": "https://es.wikipedia.org/wiki/Markdown",
           "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
           "status": 200, "text": "Markdown"
         })
@@ -30,7 +30,7 @@ describe('fetchLink', () => {
       })
       .catch((error) => {
         expect(error).toEqual({
-          "link": "href=https://es.wikipedia.org/wiki/Markdown",
+          "link": "https://es.wikipedia.org/wiki/Markdown",
           "ok": "fail", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
           "status": "request to https://es.wikipedia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikipedia.org es.wikipedia.org:443", "text": "Markdown"
         })
@@ -40,16 +40,16 @@ describe('fetchLink', () => {
 
     it('retornar un objeto con status y ok fail', () => {
       fetchLink({
-        "link": "href=\"https://www.no-existe.com/'",
+        "link": "https://www.no-existe.com/",
         "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
         "status": 200, "text": "Markdown"
       }, {
-          "link": "href=\"https://www.no-existe.com/",
+          "link": "https://www.no-existe.com/",
           "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
           "status": 200, "text": "Markdown"
         }).then((data) => {
           expect(data).toEqual({
-            "link": "href=\"https://www.no-existe.com/'",
+            "link": "https://www.no-existe.com/",
             "ok": "fail", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
             "status": "error", "text": "Markdown"
           })
