@@ -51,6 +51,11 @@ parsing,
 [npm-scripts](https://docs.npmjs.com/misc/scripts),
 [semver](https://semver.org/), ...
 
+
+## Diagrama de flujo 
+
+![Diagrama de flujo ](img/Diagrama-flujo.png)
+
 ## Consideraciones generales
 
 - Este proyecto se debe "resolver" de manera individual.
