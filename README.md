@@ -1,6 +1,8 @@
 # Markdown Links
 
-## Preámbulo
+
+## Introducción
+
 
 [Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
 ligero muy popular entre developers. Es usado en muchísimas plataformas que
@@ -12,75 +14,38 @@ Estos archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que
 muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de
 la información que se quiere compartir.
 
-Dentro de una comunidad de código abierto, nos han propuesto crear una
-herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos
-en formato `Markdown`, para verificar los links que contengan y reportar
-algunas estadísticas.
-
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
-
-## Introducción
-
 [Node.js](https://nodejs.org/es/) es un entorno de ejecución para JavaScript
 construido con el [motor de JavaScript V8 de Chrome](https://developers.google.com/v8/).
 Esto nos va a permitir ejecutar JavaScript en el entorno del sistema operativo,
 ya sea tu máquina o un servidor, lo cual nos abre las puertas para poder
 interactuar con el sistema en sí, archivos, redes, ...
 
-En este proyecto nos alejamos un poco del navegador para construir un programa
-que se ejecute usando Node.js, donde aprenderemos sobre cómo interactuar con el
-sistema archivos, con el entorno (_proceso_, _env_, _stdin/stdout/stderr_), ...
 
 ## Objetivos
 
-El objetivo práctico de este proyecto es que aprendas cómo crear tu propia
-**librería** (o biblioteca - _library_) en JavaScript.
+El objetivo práctico de este proyecto fué crear mi propia
+**librería** (o biblioteca - _library_) en JavaScript, usando usando [Node.js](https://nodejs.org/), que lea y analice archivos
+en formato `Markdown`, para verificar los links que contengan y reportar
+algunas estadísticas.
 
-Diseñar tu propia librería es una experiencia fundamental para cualquier
-desarrollador porque que te obliga a pensar en la interfaz (API) de tus
-_módulos_ y cómo será usado por otros developers. Debes tener especial
-consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
-
-Tópicos: [Node.js](https://nodejs.org/en/),
-[módulos (CommonJS)](https://nodejs.org/docs/latest-v0.10.x/api/modules.html),
-[file system](https://nodejs.org/api/fs.html),
-[path](https://nodejs.org/api/path.html),
-[http.get](https://nodejs.org/api/http.html#http_http_get_options_callback),
-parsing,
-[markdown](https://daringfireball.net/projects/markdown/syntax), CLI,
-[npm-scripts](https://docs.npmjs.com/misc/scripts),
-[semver](https://semver.org/), ...
-
+En este proyecto nos alejamos un poco del navegador para construir un programa
+que se ejecute usando Node.js, donde aprenderemos sobre cómo interactuar con el
+sistema archivos, con el entorno (_proceso_, _env_, _stdin/stdout/stderr_), ...
 
 ## Diagrama de flujo 
 
 ![Diagrama de flujo ](img/Diagrama-flujo.png)
 
-## Consideraciones generales
 
-- Este proyecto se debe "resolver" de manera individual.
 
-- La librería debe estar implementada en JavaScript para ser ejecutada con
-Node.js. **Está permitido usar librerías externas**.
+## Instalación 
+Instale la libreria via:
+```
+npm install ivanaolortegui/md-links
+```
 
-- Tu módulo debe ser instalable via `npm install <github-user>/md-links`. Este
-módulo debe incluir tanto un _ejecutable_ que podamos invocar en la línea de
-comando como una interfaz que podamos importar con `require` para usarlo
-programáticamente.
 
-- Los tests unitarios deben **cubrir un mínimo del 70% de _statements_, _functions_,
-_lines_ y _branches_.**, ademas de pasar los test y el linter. Te recomendamos 
-utilizar [Jest](https://jestjs.io/) para tus pruebas unitarias.
 
-- Deberas de crear un script en el `package.json` que transforme el codigo
-ES6+ a ES5 con ayuda de babel.
-
-## Criterios de aceptacion
-
-Estos son los criterios de lo que debe ocurrir para que se satisfagan 
-las necesidades del usuario:
-
-- Instalar la libreria via `npm install --global <github-user>/md-links`
 
 ### `README.md`
 
