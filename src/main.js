@@ -36,7 +36,7 @@ export const stats = (links) => {
 // Función para parsear el contenido del archivo md 
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
-  parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {      
+  parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
     arraysLinksTotals.push({
       link: link.attributes.href,
       text: link.childNodes[0].rawText,
@@ -75,7 +75,7 @@ export const getFilesOfDir = (router, arrExtension) => {
 
 //Leer Archivos
 
-export const readFile = (router, validate) => {
+export const readDir = (router, validate) => {
   const arr = getFilesOfDir(router, []);
   return parserMd(arr.map((ele) => {
     return fs.readFileSync(ele).toString();
@@ -95,7 +95,7 @@ export const routerAbsoluteAndFile = (router, validate) => {
       return [];
     }
   } else {
-    return readFile(router, validate)
+    return readDir(router, validate)
   }
 
 }

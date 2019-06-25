@@ -17,7 +17,7 @@ export const routeIsAbsolute = (router) => {
 
 };
 
-// Retorna un buleano si cumple con la extosión md
+// Retorna un buleano si cumple con la extensión md
 export const extensionmd = (router) => {
     return path.extname(router) === '.md'
 }

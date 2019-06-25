@@ -1,3 +1,4 @@
+ const path = require('path');
 import { routeIsAbsolute, extensionmd, isFile, isDirectory } from '../src/index.js'
 
 describe('routeIsAbsolute', () => {

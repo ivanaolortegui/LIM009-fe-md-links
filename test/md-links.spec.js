@@ -1,5 +1,6 @@
 import fetchMock from "../__mocks__/node-fetch"
 fetchMock.config.sendAsJson = false;
+export const path = require('path');
 
 import { mdLinks } from '../src/md-links.js'
 fetchMock
