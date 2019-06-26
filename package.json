@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown Links ",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
     "htmlhint": "htmlhint dist/*.html ",
@@ -52,9 +52,10 @@
     "i": "^0.3.6",
     "jsdom": "^15.1.1",
     "markdown-it": "^8.4.2",
-    "node-fetch": "^2.6.0",
     "node-html-parser": "^1.1.15",
-    "query-selector": "^1.0.9"
+    "query-selector": "^1.0.9",
+    "node-fetch": "^2.6.0",
+    "md-links": "github:ivanaolortegui/LIM009-fe-md-links"
   },
   "directories": {
     "test": "test"
