@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown Links ",
-  "main": "lib/index.js",
+  "main": "lib/md-links.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
     "htmlhint": "htmlhint dist/*.html ",
