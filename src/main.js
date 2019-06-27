@@ -37,11 +37,20 @@ export const stats = (links) => {
 const parserMd = (content, router, validate) => {
   let arraysLinksTotals = [];
   parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
-    arraysLinksTotals.push({
-      link: link.attributes.href,
-      text: link.childNodes[0].rawText,
-      ruta: router
-    })
+    if(link.childNodes[0]=== undefined){
+      arraysLinksTotals.push({
+        link: link.attributes.href,
+        text: '',
+        ruta: router
+      })
+    } else {
+      arraysLinksTotals.push({
+        link: link.attributes.href,
+        text: link.childNodes[0].rawText,
+        ruta: router
+      })
+    }
+    
   })
   if (validate.validate === true) {
     return Promise.all(arraysLinksTotals.map((link) => {
@@ -69,6 +78,7 @@ export const getFilesOfDir = (router, arrExtension) => {
       }
     }
   })
+
 
   return arrExtension;
 }

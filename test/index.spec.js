@@ -1,4 +1,4 @@
- const path = require('path');
+const path = require('path');
 import { routeIsAbsolute, extensionmd, isFile, isDirectory } from '../src/index.js'
 
 describe('routeIsAbsolute', () => {
@@ -6,7 +6,7 @@ describe('routeIsAbsolute', () => {
     expect(typeof routeIsAbsolute).toBe('function')
   });
   it('debería retorna la ruta absoluta', () => {
-    expect(routeIsAbsolute('/home/ivana/LIM009-fe-md-links/test/index.spec.js')).toBe('/home/ivana/LIM009-fe-md-links/test/index.spec.js')
+    expect(routeIsAbsolute(path.join(process.cwd(), 'index.spec.js'))).toBe('/home/ivana/LIM009-fe-md-links/index.spec.js')
   });
   it('debería retorna la ruta absoluta', () => {
     expect(routeIsAbsolute('home/ivana/LIM009-fe-md-links/test/index.spec.js')).toBe("/home/ivana/LIM009-fe-md-links/home/ivana/LIM009-fe-md-links/test/index.spec.js")
@@ -19,10 +19,10 @@ describe('extensionmd', () => {
     expect(typeof extensionmd).toBe('function')
   });
   it('debería retorna un array', () => {
-    expect(extensionmd(path.join(process.cwd(),'/index.md'))).toBe(true)
+    expect(extensionmd(path.join(process.cwd(), '/index.md'))).toBe(true)
   });
   it('debería retorna un array vacio', () => {
-    expect(extensionmd('/home/ivana/LIM009-fe-md-links/test/index.spec.js')).toBe(false)
+    expect(extensionmd(path.join(process.cwd(), 'test/index.spec.js'))).toBe(false)
   });
 });
 
@@ -32,9 +32,9 @@ describe('isFile', () => {
     expect(typeof isFile).toBe('function')
   });
   it('debería retorna un bolean', () => {
-      expect(isFile('/home/ivana/LIM009-fe-md-links/test/show.js')).toBe(true)
-    })
-  
+    expect(isFile(path.join(process.cwd(), '/test/show.js'))).toBe(true)
+  })
+
 });
 
 describe('isDirectory', () => {
@@ -42,9 +42,9 @@ describe('isDirectory', () => {
     expect(typeof isDirectory).toBe('function')
   });
   it('debería retorna un bolean', () => {
-      expect(isDirectory('/home/ivana/LIM009-fe-md-links/test/')).toBe(true)
-    })
-  
+    expect(isDirectory(path.join(process.cwd(), 'test/'))).toBe(true)
+  })
+
 });
 
 

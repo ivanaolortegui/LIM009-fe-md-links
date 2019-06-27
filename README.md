@@ -175,30 +175,6 @@ Unique: 3
 Broken: 1
 ```
 
-## Entregables
-
-Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
-incluir tanto un ejecutable como una interfaz que podamos importar con `require`
-para usarlo programáticamente.
-
-## Pistas / Tips
-
-### FAQs
-
-#### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
-
-Para que el módulo sea instalable desde GitHub solo tiene que:
-
-- Estar en un repo público de GitHub
-- Contener un `package.json` válido
-
-Con el comando `npm install githubname/reponame` podemos instalar directamente
-desde GitHub. Ver [docs oficiales de `npm install` acá](https://docs.npmjs.com/cli/install).
-
-Por ejemplo, el [`course-parser`](https://github.com/Laboratoria/course-parser)
-que usamos para la currícula no está publicado en el registro público de NPM,
-así que lo instalamos directamente desde GitHub con el comando `npm install
-Laboratoria/course-parser`.
 
 ## Board con el backlog de la creación de la librería
 
@@ -208,7 +184,8 @@ hacer consultas HTTP; tanto usando librerías como implementando en VanillaJS.
 
 Visita los siguientes links para conocer el backlog e implementación de la librería.
 - [Project de Github](https://github.com/ivanaolortegui/LIM009-fe-md-links/projects/1)
-- [Tablero de Trello](https://trello.com/b/a0rmSguw/md-links-ivana-olortegui)
+- [Tablero de Trello](https://trello.com/b/a0rmSguw/md-links-ivana-olortegui)  
+
 Duración: 3 semanas.
 Metodología: Scrum
 En esta imagen estaba el tablero de trello duarante la realización del proyecto.
