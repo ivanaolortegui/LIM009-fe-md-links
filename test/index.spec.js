@@ -6,10 +6,10 @@ describe('routeIsAbsolute', () => {
     expect(typeof routeIsAbsolute).toBe('function')
   });
   it('debería retorna la ruta absoluta', () => {
-    expect(routeIsAbsolute(path.join(process.cwd(), 'index.spec.js'))).toBe('/home/ivana/LIM009-fe-md-links/index.spec.js')
+    expect(routeIsAbsolute(path.join(process.cwd(), '/index.spec.js'))).toBe(path.join(process.cwd(),'index.spec.js'))
   });
   it('debería retorna la ruta absoluta', () => {
-    expect(routeIsAbsolute('home/ivana/LIM009-fe-md-links/test/index.spec.js')).toBe("/home/ivana/LIM009-fe-md-links/home/ivana/LIM009-fe-md-links/test/index.spec.js")
+    expect(routeIsAbsolute('index.spec.js')).toBe(path.join(process.cwd(),'index.spec.js'))
   });
 
 });

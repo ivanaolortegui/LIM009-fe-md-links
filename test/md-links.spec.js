@@ -17,12 +17,12 @@ describe('mdLinks', () => {
       then((links) => {
         expect(links).toEqual([{
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ok": "OK", "ruta": path.join(process.cwd(), '/test/readme.md'),
           "status": 200, "text": "Markdown"
         },
         {
           "link": "https://es.wikipedia.org/wiki/Markdown", "ok": "OK",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ruta":  path.join(process.cwd(), '/test/readme.md'),
           "status": 200, "text": "Man"
         }])
         done()
@@ -35,7 +35,7 @@ describe('mdLinks', () => {
       then((links) => {
         expect(links).toEqual([{
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/vacios.md",
+          "ruta":  path.join(process.cwd(), '/test/vacios.md'),
           "text": ""
         }])
         done()
@@ -49,12 +49,12 @@ describe('mdLinks', () => {
       then((links) => {
         expect(links).toEqual([{
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ruta": path.join(process.cwd(), 'test/readme.md'),
           "text": "Markdown"
         },
         {
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ruta": path.join(process.cwd(), 'test/readme.md'),
           "text": "Man"
         }])
         done()
@@ -66,24 +66,24 @@ describe('mdLinks', () => {
       then((links) => {
         expect(links).toEqual([{
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/",
+          "ruta": path.join(process.cwd(), '/test/'),
           "text": "Markdown"
         },
         {
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/",
+          "ruta": path.join(process.cwd(), '/test/'),
           "text": "Man"
         }, {
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/",
+          "ruta": path.join(process.cwd(), '/test/'),
           "text": "",
         }, {
           "link": "http://www.hddskds.cd/",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/",
+          "ruta": path.join(process.cwd(), '/test/'),
           "text": "vv",
         }, {
           "link": "http://www.hddskds.cd/",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/",
+          "ruta": path.join(process.cwd(), '/test/'),
           "text": "vv",
         }])
         done();
@@ -96,14 +96,14 @@ describe('mdLinks', () => {
         expect(links).toEqual([{
           "link": "http://www.hddskds.cd/",
           "ok": "fail",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/vv",
+          "ruta": path.join(process.cwd(), '/test/vv'),
           "status": "request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80",
           "text": "vv"
         },
         {
           "link": "http://www.hddskds.cd/",
           "ok": "fail",
-          "ruta": "/home/ivana/LIM009-fe-md-links/test/vv",
+          "ruta": path.join(process.cwd(), '/test/vv'),
           "status": "request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80",
           "text": "vv"
         }])

@@ -1,6 +1,7 @@
 import fetchMock from "../__mocks__/node-fetch"
 fetchMock.config.sendAsJson = false;
 import { cli, mdLink } from '../src/cli.js'
+const path = require('path');
 
 fetchMock
   .mock('https://es.wikipedia.org/wiki/Markdown', 200)
@@ -25,30 +26,30 @@ describe('md-links', () => {
   });
 
   it('debería retornar validate y stats', (done) => {
-    mdLink('/home/ivana/LIM009-fe-md-links/test/readme.md', { validate: true, stats: true }).
+    mdLink( path.join(process.cwd(), 'test/readme.md'), { validate: true, stats: true }).
       then((links) => {
         expect(links).toEqual(`Total :2\nUnique :1\nBroken : 0`)
         done()
       });
   });
   it('debería retornar stats', (done) => {
-    mdLink('/home/ivana/LIM009-fe-md-links/test/readme.md', { validate: false, stats: true }).
+    mdLink( path.join(process.cwd(), 'test/readme.md'), { validate: false, stats: true }).
       then((links) => {
         expect(links).toEqual(`Total :2\nUnique :1`)
         done()
       });
   });
   it('debería retornar validate', (done) => {
-    mdLink('/home/ivana/LIM009-fe-md-links/test/readme.md', { validate: true, stats: false }).
+    mdLink( path.join(process.cwd(), 'test/readme.md'), { validate: true, stats: false }).
       then((links) => {
         expect(links).toEqual([{
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ok": "OK", "ruta":  path.join(process.cwd(), 'test/readme.md'),
           "status": 200, "text": "Markdown"
         },
         {
           "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ok": "OK", "ruta": "/home/ivana/LIM009-fe-md-links/test/readme.md",
+          "ok": "OK", "ruta":  path.join(process.cwd(), 'test/readme.md'),
           "status": 200, "text": "Man"
         }])
         done()
