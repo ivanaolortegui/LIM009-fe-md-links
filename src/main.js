@@ -8,36 +8,26 @@ import { parse } from 'node-html-parser';
 // funcion para stats y validate
 export const broken = (links, arr) => {
   let brokens = 0;
-  arr.forEach((ele) => {
-    if (ele.ok === 'fail') {
-      brokens += 1;
-    } else {
-      brokens += 0;
-    }
-  })
+  arr.forEach(ele => ele.ok === 'fail' ?  brokens += 1 : brokens += 0);
   const result = links.concat(`\nBroken : ${brokens}`)
   return `${result}`;
 }
 
 // Funcion para stats
 export const stats = (links) => {
-  let total = 0;
+  let total = links.length;
+  let unique = [];
   links.forEach((ele) => {
-    (ele.link) ? total += 1 : total;
-  })
-  let unique = []
-  links.filter((ele) => {
     unique.indexOf(ele.link) === -1 ? unique.push(ele.link) : unique;
   })
-
   return `Total :${total}\nUnique :${unique.length}`
 }
 
 // Función para parsear el contenido del archivo md 
 const parserMd = (content, router, validate) => {
-  let arraysLinksTotals = [];
+  const arraysLinksTotals = [];
   parse(md.render(`${content}`)).querySelectorAll('a').forEach((link) => {
-    if(link.childNodes[0]=== undefined){
+    if (!link.childNodes[0]) {
       arraysLinksTotals.push({
         link: link.attributes.href,
         text: '',
@@ -50,7 +40,7 @@ const parserMd = (content, router, validate) => {
         ruta: router
       })
     }
-    
+
   })
   if (validate.validate === true) {
     return Promise.all(arraysLinksTotals.map((link) => {
@@ -87,11 +77,7 @@ export const getFilesOfDir = (router, arrExtension) => {
 
 export const readDir = (router, validate) => {
   const arr = getFilesOfDir(router, []);
-  return parserMd(arr.map((ele) => {
-    return fs.readFileSync(ele).toString();
-  }), router, validate)
-
-
+  return parserMd(arr.map((ele) =>  fs.readFileSync(ele).toString()), router, validate)
 }
 // Función que convierte ruta en absoluta 
 //si es archivo y si tiene extensión md y si es carpeta 

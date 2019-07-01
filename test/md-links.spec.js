@@ -5,6 +5,7 @@ export const path = require('path');
 import { mdLinks } from '../src/md-links.js'
 fetchMock
   .mock('https://es.wikipedia.org/wiki/Markdown', 200)
+  .mock('http://aplicaciones.cultura.gob.pe/pages/pgw_login', 404)
   .mock('http://www.hddskds.cd/',
     { throws: new TypeError('request to http://www.hddskds.cd/ failed, reason: getaddrinfo ENOTFOUND www.hddskds.cd www.hddskds.cd:80') })
 
@@ -77,7 +78,13 @@ describe('mdLinks', () => {
           "link": "https://es.wikipedia.org/wiki/Markdown",
           "ruta": path.join(process.cwd(), '/test/'),
           "text": "",
-        }, {
+        },{
+          "link": "http://aplicaciones.cultura.gob.pe/pages/pgw_login",
+          "ruta": path.join(process.cwd(), '/test/'),
+          "text": "cultura",
+        },
+        
+        {
           "link": "http://www.hddskds.cd/",
           "ruta": path.join(process.cwd(), '/test/'),
           "text": "vv",
@@ -94,6 +101,12 @@ describe('mdLinks', () => {
     mdLinks(path.join(process.cwd(), '/test/vv'), { validate: true }).
       then((links) => {
         expect(links).toEqual([{
+          "link": "http://aplicaciones.cultura.gob.pe/pages/pgw_login",
+          "ok": "fail",
+          "ruta": path.join(process.cwd(), '/test/vv'),
+          "status": 404,
+          "text": "cultura"
+        },{
           "link": "http://www.hddskds.cd/",
           "ok": "fail",
           "ruta": path.join(process.cwd(), '/test/vv'),

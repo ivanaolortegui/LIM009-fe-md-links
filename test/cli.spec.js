@@ -40,18 +40,11 @@ describe('md-links', () => {
       });
   });
   it('debería retornar validate', (done) => {
-    mdLink( path.join(process.cwd(), 'test/readme.md'), { validate: true, stats: false }).
+    mdLink( path.join(process.cwd(), 'test/readme.md'), { validate: true}).
       then((links) => {
-        expect(links).toEqual([{
-          "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ok": "OK", "ruta":  path.join(process.cwd(), 'test/readme.md'),
-          "status": 200, "text": "Markdown"
-        },
-        {
-          "link": "https://es.wikipedia.org/wiki/Markdown",
-          "ok": "OK", "ruta":  path.join(process.cwd(), 'test/readme.md'),
-          "status": 200, "text": "Man"
-        }])
+        expect(links).toEqual(` https://es.wikipedia.org/wiki/Markdown  Markdown  ${path.join(process.cwd(), 'test/readme.md')}  200  OK 
+ https://es.wikipedia.org/wiki/Markdown  Man  ${path.join(process.cwd(), 'test/readme.md')}  200  OK 
+`)
         done()
       });
   });

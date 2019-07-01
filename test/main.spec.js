@@ -27,7 +27,7 @@ describe('stats', () => {
     { 
       "ruta": path.join(process.cwd(), 'test/readme.md'),
       "text": "Man"
-    }])).toBe(`Total :0\nUnique :1`)
+    }])).toBe(`Total :2\nUnique :1`)
   })
 });
 
